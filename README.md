@@ -1,9 +1,10 @@
 # docker-nginx
 
-[![Build Status](https://travis-ci.com/madharjan/docker-nginx.svg?branch=master)](https://travis-ci.com/madharjan/docker-nginx)
-[![Layers](https://images.microbadger.com/badges/image/madharjan/docker-nginx.svg)](http://microbadger.com/images/madharjan/docker-nginx)
+[![Build Status](https://travis-ci.com/onezoom/docker-nginx.svg?branch=master)](https://travis-ci.com/onezoom/docker-nginx)
+[![Layers](https://images.microbadger.com/badges/image/onezoom/docker-nginx.svg)](http://microbadger.com/images/onezoom/docker-nginx)
 
-Docker container for Nginx based on [madharjan/docker-base](https://github.com/madharjan/docker-base/)
+Docker container for Nginx based on [onezoom/docker-base](https://github.com/onezoom/docker-base/),
+derived from [madharjan/docker-base](https://github.com/madharjan/docker-base/)
 
 ## Features
 
@@ -33,7 +34,7 @@ Docker container for Nginx based on [madharjan/docker-base](https://github.com/m
 
 ```bash
 # clone project
-git clone https://github.com/madharjan/docker-nginx
+git clone https://github.com/onezoom/docker-nginx
 cd docker-nginx
 
 # build
@@ -68,7 +69,7 @@ docker run -d \
   -v /opt/docker/nginx/html:/var/www/html \
   -v /opt/docker/nginx/log:/var/log/nginx \
   --name nginx \
-  madharjan/docker-nginx:1.10.3
+  onezoom/docker-nginx:1.10.3
 ```
 
 ## Systemd Unit File
@@ -89,7 +90,7 @@ ExecStartPre=-/bin/mkdir -p /opt/docker/nginx/html
 ExecStartPre=-/bin/mkdir -p /opt/docker/nginx/log
 ExecStartPre=-/usr/bin/docker stop nginx
 ExecStartPre=-/usr/bin/docker rm nginx
-ExecStartPre=-/usr/bin/docker pull madharjan/docker-nginx:1.10.3
+ExecStartPre=-/usr/bin/docker pull onezoom/docker-nginx:1.10.3
 
 ExecStart=/usr/bin/docker run \
   -p 80:80 \
@@ -97,7 +98,7 @@ ExecStart=/usr/bin/docker run \
   -v /opt/docker/nginx/html:/var/www/html \
   -v /opt/docker/nginx/log:/var/log/nginx \
   --name nginx \
-  madharjan/docker-nginx:1.10.3
+  onezoom/docker-nginx:1.10.3
 
 ExecStop=/usr/bin/docker stop -t 2 nginx
 
@@ -133,7 +134,7 @@ docker run --rm \
   -e INSTALL_PROJECT=1 \
   -e PROJECT_GIT_REPO=https://github.com/BlackrockDigital/startbootstrap-creative.git \
   -e PROJECT_GIT_TAG=v5.1.4 \
-  madharjan/docker-nginx:1.10.3 \
+  onezoom/docker-nginx:1.10.3 \
   nginx-systemd-unit | \
   sudo tee /etc/systemd/system/nginx.service
 
@@ -151,7 +152,7 @@ docker run --rm \
   -e PROXY_HOST=odoo \
   -e PROXY_PORT=8080 \
   -e LINK_CONTAINERS=odoo:odoo,nginx:website \
-  madharjan/docker-nginx:1.10.3 \
+  onezoom/docker-nginx:1.10.3 \
   nginx-systemd-unit | \
   sudo tee /etc/systemd/system/nginx.service
 

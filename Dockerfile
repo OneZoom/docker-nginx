@@ -1,12 +1,12 @@
-FROM madharjan/docker-base:16.04
-MAINTAINER Madhav Raj Maharjan <madhav.maharjan@gmail.com>
+FROM onezoom/docker-base:18.04
+MAINTAINER OneZoom developers <mail@onezoom.org>
 
 ARG VCS_REF
 ARG NGINX_VERSION
 ARG DEBUG=false
 
 LABEL description="Docker container for Nginx" os_version="Ubuntu ${UBUNTU_VERSION}" \
-      org.label-schema.vcs-ref=${VCS_REF} org.label-schema.vcs-url="https://github.com/madharjan/docker-nginx"
+      org.label-schema.vcs-ref=${VCS_REF} org.label-schema.vcs-url="https://github.com/onezoom/docker-nginx"
 
 ENV NGINX_VERSION ${NGINX_VERSION}
 

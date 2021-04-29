@@ -70,7 +70,7 @@ ExecStartPre=-/bin/mkdir -p ${VOLUME_HOME}/${NAME}/html
 ExecStartPre=-/bin/mkdir -p ${VOLUME_HOME}/${NAME}/log
 ExecStartPre=-/usr/bin/docker stop ${NAME}
 ExecStartPre=-/usr/bin/docker rm ${NAME}
-ExecStartPre=-/usr/bin/docker pull madharjan/docker-nginx:${VERSION}
+ExecStartPre=-/usr/bin/docker pull onezoom/docker-nginx:${VERSION}
 
 ExecStart=/usr/bin/docker run \\
 ${LINK_LINE}-e INSTALL_PROJECT=${INSTALL_PROJECT} \\
@@ -84,7 +84,7 @@ ${PORT_LINE}-v ${VOLUME_HOME}/${NAME}/etc/conf.d:/etc/nginx/conf.d \\
 -v ${VOLUME_HOME}/${NAME}/html:/var/www/html \\
 -v ${VOLUME_HOME}/${NAME}/log:/var/log/nginx \\
 --name ${NAME} \\
-madharjan/docker-nginx:${VERSION}
+onezoom/docker-nginx:${VERSION}
 
 ExecStop=/usr/bin/docker stop -t 2 ${NAME}
 

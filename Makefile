@@ -1,5 +1,5 @@
 
-NAME = madharjan/docker-nginx
+NAME = onezoom/docker-nginx
 VERSION = 1.10.3
 
 DEBUG ?= true
