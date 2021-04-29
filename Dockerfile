@@ -1,4 +1,4 @@
-FROM onezoom/docker-base:18.04
+FROM onezoom/docker-base:20.04
 MAINTAINER OneZoom developers <mail@onezoom.org>
 
 ARG VCS_REF
