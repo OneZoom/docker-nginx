@@ -1,9 +1,9 @@
-## 1.18.0
+## 1.28.0
 
 ### Changes
 
-* Updated to be based on onezoom/docker-base:20.04
-* Using Nginx 1.18.0
+* Updated to be based on onezoom/docker-base:24.04
+* Using Nginx 1.28.0
 
 ## 1.10.3
 

@@ -1,6 +1,6 @@
 
 NAME = onezoom/docker-nginx
-VERSION = 1.18.0
+VERSION = 1.28.0
 
 DEBUG ?= true
 

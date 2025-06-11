@@ -1,4 +1,4 @@
-FROM onezoom/docker-base:20.04
+FROM onezoom/docker-base:24.04
 MAINTAINER OneZoom developers <mail@onezoom.org>
 
 ARG VCS_REF
@@ -8,7 +8,7 @@ ARG DEBUG=false
 LABEL description="Docker container for Nginx" os_version="Ubuntu ${UBUNTU_VERSION}" \
       org.label-schema.vcs-ref=${VCS_REF} org.label-schema.vcs-url="https://github.com/onezoom/docker-nginx"
 
-ENV NGINX_VERSION ${NGINX_VERSION}
+ENV NGINX_VERSION=${NGINX_VERSION}
 
 RUN mkdir -p /build
 COPY . /build

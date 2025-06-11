@@ -13,7 +13,7 @@ itself derived from [madharjan/docker-base](https://github.com/madharjan/docker-
 * Deploy/update web projects from git
 * Setup reverse proxy
 
-## Nginx 1.18.0 (docker-nginx)
+## Nginx 1.28.0 (docker-nginx)
 
 ### Environment
 
@@ -69,7 +69,7 @@ docker run -d \
   -v /opt/docker/nginx/html:/var/www/html \
   -v /opt/docker/nginx/log:/var/log/nginx \
   --name nginx \
-  onezoom/docker-nginx:1.18.0
+  onezoom/docker-nginx:1.28.0
 ```
 
 ## Systemd Unit File
@@ -90,7 +90,7 @@ ExecStartPre=-/bin/mkdir -p /opt/docker/nginx/html
 ExecStartPre=-/bin/mkdir -p /opt/docker/nginx/log
 ExecStartPre=-/usr/bin/docker stop nginx
 ExecStartPre=-/usr/bin/docker rm nginx
-ExecStartPre=-/usr/bin/docker pull onezoom/docker-nginx:1.18.0
+ExecStartPre=-/usr/bin/docker pull onezoom/docker-nginx:1.28.0
 
 ExecStart=/usr/bin/docker run \
   -p 80:80 \
@@ -98,7 +98,7 @@ ExecStart=/usr/bin/docker run \
   -v /opt/docker/nginx/html:/var/www/html \
   -v /opt/docker/nginx/log:/var/log/nginx \
   --name nginx \
-  onezoom/docker-nginx:1.18.0
+  onezoom/docker-nginx:1.28.0
 
 ExecStop=/usr/bin/docker stop -t 2 nginx
 
@@ -134,7 +134,7 @@ docker run --rm \
   -e INSTALL_PROJECT=1 \
   -e PROJECT_GIT_REPO=https://github.com/BlackrockDigital/startbootstrap-creative.git \
   -e PROJECT_GIT_TAG=v5.1.4 \
-  onezoom/docker-nginx:1.18.0 \
+  onezoom/docker-nginx:1.28.0 \
   nginx-systemd-unit | \
   sudo tee /etc/systemd/system/nginx.service
 
@@ -152,7 +152,7 @@ docker run --rm \
   -e PROXY_HOST=odoo \
   -e PROXY_PORT=8080 \
   -e LINK_CONTAINERS=odoo:odoo,nginx:website \
-  onezoom/docker-nginx:1.18.0 \
+  onezoom/docker-nginx:1.28.0 \
   nginx-systemd-unit | \
   sudo tee /etc/systemd/system/nginx.service
 
