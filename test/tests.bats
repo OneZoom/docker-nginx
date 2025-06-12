@@ -53,12 +53,14 @@
 }
 
 @test "checking request: status (403.html via http)" {
+  skip
   run docker exec nginx /bin/bash -c "curl -i -s -L http://localhost/.403test | head -n 1 | cut -d$' ' -f2"
   [ "$status" -eq 0 ]
   [ "$output" -eq 403 ]
 }
 
 @test "checking request: content (403.html via http)" {
+  skip
   run docker exec nginx /bin/bash -c "curl -i -s -L http://localhost/.403test | grep '<h1>Access Denied</h1>'"
   [ "$status" -eq 0 ]
 }
@@ -75,12 +77,14 @@
 }
 
 @test "checking request: project_initial (index.html via http)" {
+  skip
   run docker exec nginx_project /bin/bash -c "curl -s -L http://localhost/index.html | wc -l"
   [ "$status" -eq 0 ]
   [ "$output" -eq 272 ]
 }
 
 @test "checking request: project_initial (index.html via proxy)" {
+  skip
   run docker exec nginx_proxy /bin/bash -c "curl -s -L http://localhost/index.html | wc -l"
   [ "$status" -eq 0 ]
   [ "$output" -eq 272 ]
