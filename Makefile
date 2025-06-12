@@ -3,7 +3,9 @@ NAME = onezoom/docker-nginx
 VERSION = 1.28.0
 
 DEBUG ?= true
+PLATFORM ?= 
 
+PLATFORM_ARG = $(if $(PLATFORM),--platform $(PLATFORM),)
 DOCKER_USERNAME ?= $(shell read -p "DockerHub Username: " pwd; echo $$pwd)
 DOCKER_PASSWORD ?= $(shell stty -echo; read -p "DockerHub Password: " pwd; stty echo; echo $$pwd)
 DOCKER_LOGIN ?= $(shell cat ~/.docker/config.json | grep "docker.io" | wc -l)
@@ -20,7 +22,7 @@ else
 endif
 
 build:
-	docker build \
+	docker build $(PLATFORM_ARG) \
 	 --build-arg NGINX_VERSION=$(VERSION) \
 	 --build-arg VCS_REF=`git rev-parse --short HEAD` \
 	 --build-arg DEBUG=$(DEBUG)\
@@ -33,7 +35,7 @@ run:
 	mkdir -p /tmp/nginx/etc
 	mkdir -p /tmp/nginx/html
 
-	docker run -d \
+	docker run $(PLATFORM_ARG) -d \
 		-e DEBUG=$(DEBUG) \
 		-v /tmp/nginx/etc:/etc/nginx/conf.d \
 		-v /tmp/nginx/html:/var/www/html \
@@ -42,7 +44,7 @@ run:
 
 	sleep 2
 
-	docker run -d \
+	docker run $(PLATFORM_ARG) -d \
 		-e DEBUG=$(DEBUG) \
 		-e DISABLE_NGINX=1 \
 		--name nginx_no_nginx $(NAME):$(VERSION)
@@ -53,7 +55,7 @@ run:
 	mkdir -p /tmp/nginx_project/etc
 	mkdir -p /tmp/nginx_project/html
 
-	docker run -d \
+	docker run $(PLATFORM_ARG) -d \
 		-e DEBUG=$(DEBUG) \
 		-v /tmp/nginx_project/etc:/etc/nginx/conf.d \
 		-v /tmp/nginx_project/html:/var/www/html \
@@ -64,7 +66,7 @@ run:
 
 	sleep 4
 
-	docker run -d \
+	docker run $(PLATFORM_ARG) -d \
 		--link nginx_project:project \
 		-e DEBUG=$(DEBUG) \
 		-e DEFAULT_PROXY=1 \
